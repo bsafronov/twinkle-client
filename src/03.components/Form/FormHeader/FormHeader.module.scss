@@ -1,0 +1,12 @@
+.main {
+  background-color: rgba(var(--accent-faded-rgb), 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

@@ -1,0 +1,12 @@
+.main {
+  right: 0;
+  background-color: var(--background-add);
+  padding: 8px 0;
+  top: 100%;
+  transform: translateY(4px);
+  box-shadow: 0 0 10px 2px rgba($color: var(--accent-faded-rgb), $alpha: 0.2);
+  border-radius: 8px;
+  content: "";
+  position: absolute;
+  z-index: 100;
+}

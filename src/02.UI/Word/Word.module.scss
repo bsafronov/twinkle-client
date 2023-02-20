@@ -1,0 +1,7 @@
+.main {
+  color: var(--accent-faded);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  flex-shrink: 10000;
+}

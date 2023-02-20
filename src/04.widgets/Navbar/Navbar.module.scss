@@ -1,0 +1,24 @@
+.main {
+  width: var(--navbar-width);
+  position: sticky;
+  height: max-content;
+  top: 72px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 8px;
+  gap: 8px;
+
+  &:hover {
+    background-color: rgba(lightgray, 0.3);
+  }
+}

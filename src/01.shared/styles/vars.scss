@@ -1,0 +1,33 @@
+@function HexToRGB($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+
+html[data-theme="light"] {
+  --background: #edeef0;
+  --background-add: #fff;
+  --border: #d3d3d3;
+  --accent-faded: #a8a8a8;
+  --accent-faded-rgb: #{HexToRGB(#a8a8a8)};
+  --accent-blue: #0185ff;
+  --accent-blue-rgb: #{HexToRGB(#0185ff)};
+  --danger: #d60a1b;
+  --success: #2bc42b;
+}
+
+// html[data-theme="dark"] {
+
+// }
+
+:root {
+  --main-wrapper-width: 1100px;
+  --navbar-width: 140px;
+  --spacing-main: 16px;
+  --content-wrapper-width: calc(
+    var(--main-wrapper-width) - var(--navbar-width) - var(--spacing-main)
+  );
+  --content-main-side-width: 560px;
+  --content-add-side-width: calc(
+    var(--content-wrapper-width) - var(--content-main-side-width) -
+      var(--spacing-main)
+  );
+}

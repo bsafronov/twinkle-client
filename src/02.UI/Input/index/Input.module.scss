@@ -1,0 +1,53 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  & > svg {
+    position: absolute;
+    pointer-events: none;
+    transform: translateX(8px);
+    width: 16px;
+    height: 16px;
+    color: var(--accent-faded);
+  }
+}
+
+.main {
+  width: 100%;
+  font: inherit;
+
+  &::placeholder {
+    font: inherit;
+    color: var(--accent-faded);
+  }
+}
+
+.outline {
+  border: 1px solid var(--border);
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: var(--background-add);
+
+  &:focus {
+    outline: none;
+    border: 1px solid var(--accent-faded);
+  }
+}
+
+.iconic {
+  background-color: var(--background);
+  border: none;
+  padding: 8px 8px 8px 28px;
+  border-radius: 8px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

@@ -1,0 +1,52 @@
+.main {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 8px 0;
+  background-color: var(--background-add);
+  z-index: 10000;
+  min-height: 58px;
+}
+
+.logo_box {
+  display: flex;
+  align-items: center;
+  min-width: var(--navbar-width);
+  gap: 4px;
+  transform: translateX(-2px);
+}
+
+.title {
+  font-weight: 800;
+  font-size: 24px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.player {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.player_buttons {
+  display: flex;
+  align-items: center;
+}
+
+.avatar_box {
+  display: flex;
+  align-items: center;
+}

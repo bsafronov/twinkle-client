@@ -1,0 +1,85 @@
+.main {
+  border-radius: 8px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.default {
+  padding: 4px 8px;
+  color: var(--accent-faded);
+  background-color: transparent;
+  border: 1px solid transparent;
+
+  &:hover {
+    background-color: var(--background);
+    color: var(--accent-blue);
+  }
+}
+
+.outlined {
+  padding: 8px 16px;
+  background-color: transparent;
+}
+
+.outlined.primary {
+  border: 1px solid rgba(var(--accent-blue-rgb), 0.3);
+  background-color: rgba(var(--accent-blue-rgb), 0.05);
+  color: var(--accent-blue);
+  transition: background-color 0.4s, color 0.2s;
+
+  &:hover {
+    background-color: var(--accent-blue);
+    color: var(--background-add);
+  }
+}
+.outlined.add {
+  border: 1px solid var(--background);
+  color: var(--accent-faded);
+  &:hover {
+    background-color: rgba(var(--accent-faded-rgb), 0.2);
+    color: var(--accent-blue);
+  }
+}
+
+.solid {
+  padding: 8px 16px;
+}
+
+.solid.primary {
+  background-color: var(--accent-blue);
+  border: 1px solid var(--accent-blue);
+  color: var(--background-add);
+
+  &:hover {
+    background-color: #0072dd;
+    color: var(--background-add);
+  }
+}
+
+.solid.add {
+  background-color: rgba(var(--accent-faded-rgb), 0.1);
+  color: var(--accent-faded);
+  border: 1px solid rgba(var(--accent-faded-rgb), 0.1);
+
+  &:hover {
+    background-color: rgba(var(--accent-faded-rgb), 0.2);
+    color: var(--accent-blue);
+  }
+}
+
+.link {
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: var(--accent-blue);
+
+  &:hover {
+    background-color: rgba(var(--accent-faded-rgb), 0.1);
+    color: #036cce;
+  }
+}

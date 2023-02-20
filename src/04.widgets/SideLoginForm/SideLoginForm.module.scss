@@ -1,0 +1,25 @@
+.main {
+  width: var(--navbar-width);
+  display: flex;
+  position: sticky;
+  top: 72px;
+  flex-direction: column;
+  height: max-content;
+  gap: 8px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.redirect {
+  font-size: 12px;
+  color: var(--accent-blue);
+  align-self: center;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

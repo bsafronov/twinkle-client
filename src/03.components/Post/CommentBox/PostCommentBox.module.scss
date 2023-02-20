@@ -1,0 +1,23 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  & > *:not(:last-child) :nth-child(2)::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--background);
+  }
+  opacity: 0;
+  animation: CommentBox 1s forwards;
+}
+
+@keyframes CommentBox {
+  to {
+    opacity: 1;
+  }
+}

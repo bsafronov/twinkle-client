@@ -1,0 +1,43 @@
+.main {
+  border-radius: 16px;
+  overflow: hidden;
+  display: grid;
+  gap: 2px;
+
+  & * {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.double {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.triple {
+  grid-template-columns: repeat(2, 1fr);
+
+  & :first-child {
+    grid-column: span 2;
+  }
+}
+
+.multi {
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  & :nth-child(1) {
+    grid-column: span calc(var(--columns) / 2);
+  }
+
+  & :nth-child(2) {
+    grid-column: span calc(var(--columns) / 2);
+  }
+
+  & :not(:nth-child(1)):not(:nth-child(2)) {
+    grid-column: span calc(var(--columns) / var(--bottom-count));
+  }
+}
+
+.nine {
+  grid-template-columns: repeat(3, 1fr);
+}

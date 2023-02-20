@@ -1,0 +1,19 @@
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 4px 8px;
+
+  &:hover {
+    background-color: var(--background);
+  }
+}
+
+.red {
+  color: #ff0000;
+}

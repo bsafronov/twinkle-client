@@ -1,0 +1,63 @@
+.main {
+  border-radius: 50%;
+  min-width: 24px;
+  min-height: 24px;
+  max-width: 24px;
+  max-height: 24px;
+  overflow: hidden;
+
+  & * {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    background-color: bisque;
+  }
+}
+
+.s {
+  min-width: 32px;
+  min-height: 32px;
+  max-width: 32px;
+  max-height: 32px;
+
+  & * {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.m {
+  min-width: 40px;
+  min-height: 40px;
+  max-width: 40px;
+  max-height: 40px;
+
+  & * {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.l {
+  min-width: 64px;
+  min-height: 64px;
+  max-width: 64px;
+  max-height: 64px;
+
+  & * {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.xl {
+  min-width: 150px;
+  min-height: 150px;
+  max-width: 150px;
+  max-height: 150px;
+
+  & * {
+    width: 150px;
+    height: 150px;
+  }
+}

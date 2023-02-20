@@ -1,0 +1,9 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  & > :last-child {
+    align-self: flex-end;
+  }
+}

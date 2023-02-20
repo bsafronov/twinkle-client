@@ -1,0 +1,8 @@
+.main {
+  color: var(--accent-blue);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input::placeholder,
+textarea::placeholder,
+input,
+button,
+a {
+  font: inherit;
+  color: inherit;
+  vertical-align: baseline;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}

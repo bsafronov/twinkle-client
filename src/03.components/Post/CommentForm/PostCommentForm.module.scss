@@ -1,0 +1,29 @@
+.main {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  flex-grow: 1;
+}
+
+.left {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.avatar_wrapper {
+  transform: translateY(4px);
+}
+
+.text_wrapper {
+  border: 1px solid var(--background);
+  border-radius: 8px;
+  padding: 8px;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.send {
+  transform: translateY(4px);
+}

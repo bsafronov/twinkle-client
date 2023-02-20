@@ -1,0 +1,27 @@
+.main {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-family: inherit;
+  border: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  height: 16px;
+  overflow: visible;
+  resize: none;
+  // transition: height 0.1s;
+
+  &:focus {
+    border: 0;
+    outline: none;
+  }
+
+  &::placeholder {
+    color: var(--accent-faded);
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
