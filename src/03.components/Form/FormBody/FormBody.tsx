@@ -8,10 +8,21 @@ interface FormBodyProps
     HTMLFormElement
   > {}
 
-const FormBody: React.FC<FormBodyProps> = ({ children, ...rest }) => {
+const FormBody: React.FC<FormBodyProps> = ({
+  children,
+  className,
+  onSubmit,
+  ...rest
+}) => {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    onSubmit && onSubmit(e);
+  }
+
   return (
     <Box>
-      <form {...rest} className={s.main}>
+      <form onSubmit={e => handleSubmit(e)} {...rest} className={s.main}>
         {children}
       </form>
     </Box>

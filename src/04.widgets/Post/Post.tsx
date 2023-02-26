@@ -10,42 +10,74 @@ import { HiChatBubbleLeft } from "react-icons/hi2";
 import Word from "@/02.UI/Word/Word";
 import { useToggle } from "@/01.shared/hooks/useToggle";
 import Separator from "@/02.UI/Separator/Separator";
-import Avatar from "@/02.UI/Avatar/Avatar";
 import PostCommentBox from "@/03.components/Post/CommentBox/PostCommentBox";
 import PostCommentForm from "@/03.components/Post/CommentForm/PostCommentForm";
 import { useAppSelector } from "@/01.shared/hooks/redux";
+import { FC, useEffect, useState } from "react";
+import { PostProps } from "@/01.shared/store/reducers/userWallReducer/userWall.interface";
 
-const Post = () => {
+interface IPostProps {
+  post: PostProps;
+}
+
+const Post: FC<IPostProps> = ({ post }) => {
   const comments = useToggle(false);
   const { isAuth } = useAppSelector(state => state.user);
+  const [text, setText] = useState("");
+  const [images, setImages] = useState<string[]>([]);
+  const [audios, setAudios] = useState<string[]>([]);
+
+  function sortContent() {
+    setText("");
+    setImages([]);
+    setAudios([]);
+
+    post.content.map(el => {
+      if (el.desc.startsWith("image")) {
+        return setImages(prev => [...prev, el.desc]);
+      }
+
+      if (el.desc.startsWith("audio")) {
+        return setAudios(prev => [...prev, el.desc]);
+      }
+
+      return setText(el.desc);
+    });
+  }
+
+  useEffect(() => {
+    sortContent();
+  }, [post]);
 
   return (
     <Card>
       <Box>
         <div className={s.main}>
-          <PostHeader />
+          <PostHeader post={post} />
           <div className={s.content}>
-            <PostTextBox />
-            <PostImageBox />
+            {text && <PostTextBox text={text} />}
+            {images.length > 0 && <PostImageBox images={images} />}
           </div>
           <div className={s.content_actions}>
             <div className={s.buttons}>
               <Button _flex>
                 <HiHeart size={20} />
-                <Word>10</Word>
+                {post.comments.length > 0 && (
+                  <Word>{post.comments.length}</Word>
+                )}
               </Button>
               <Button _flex onClick={() => comments.toggle()}>
                 <HiChatBubbleLeft
                   size={20}
                   color={comments.value ? "var(--accent-blue)" : "inherit"}
                 />
-                <Word>5</Word>
+                {post.likes.length > 0 && <Word>{post.likes.length}</Word>}
               </Button>
             </div>
-            <div className={s.seen}>
+            {/* <div className={s.seen}>
               <Word>10</Word>
               <HiEye size={12} color={"var(--accent-faded)"} />
-            </div>
+            </div> */}
           </div>
         </div>
       </Box>

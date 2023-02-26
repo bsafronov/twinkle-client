@@ -8,7 +8,7 @@ const TestWidget = () => {
       <Box>
         <div className={s.main}>
           <Button _variant="solid">Кнопка</Button>
-          <Button _variant="outlined">Кнопка</Button>
+          {/* <Button _variant="outlined">Кнопка</Button>
           <Button _variant="link">Кнопка</Button>
           <Button _color="primary" _variant="solid">
             Кнопка
@@ -18,7 +18,7 @@ const TestWidget = () => {
           </Button>
           <Button _color="primary" _variant="link">
             Кнопка
-          </Button>
+          </Button> */}
         </div>
       </Box>
     </Card>

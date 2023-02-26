@@ -82,4 +82,12 @@
     background-color: rgba(var(--accent-faded-rgb), 0.1);
     color: #036cce;
   }
+
+  &:disabled {
+    color: var(--accent-faded);
+  }
+
+  &:disabled:hover {
+    background-color: transparent;
+  }
 }

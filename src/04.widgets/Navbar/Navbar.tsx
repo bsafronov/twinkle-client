@@ -1,12 +1,13 @@
 import { useRouter } from "next/router";
 import React from "react";
 import s from "./Navbar.module.scss";
-import { NavbarItemProps, navbarItems } from "./NavbarItems";
+import { NavbarItemProps, useNavbarRoutes } from "./NavbarItems";
 
 interface NavbarProps {}
 
 const Navbar: React.FC<NavbarProps> = ({}) => {
   const router = useRouter();
+  const routes = useNavbarRoutes();
 
   function handleRedirect(route: NavbarItemProps) {
     if (route.path === router.asPath) return;
@@ -17,7 +18,7 @@ const Navbar: React.FC<NavbarProps> = ({}) => {
   return (
     <nav className={s.main}>
       <ul className={s.list}>
-        {navbarItems.map((Route, index) => (
+        {routes.map((Route, index) => (
           <li key={index}>
             <a onClick={() => handleRedirect(Route)} className={s.item}>
               <Route.logo

@@ -1,21 +1,13 @@
+import { API_URL } from "@/01.shared/http";
 import clsx from "clsx";
 import React from "react";
 import s from "./PostImageBox.module.scss";
 
-interface PostImageBoxProps {}
+interface PostImageBoxProps {
+  images: string[];
+}
 
-const PostImageBox: React.FC<PostImageBoxProps> = ({}) => {
-  const images = [
-    "/img-test.jpg",
-    "/img-test.jpg",
-    "/img-test.jpg",
-    "/img-test.jpg",
-    "/img-test.jpg",
-    // "/img-test.jpg",
-    // "/img-test.jpg",
-    // "/img-test.jpg",
-    // "/img-test.jpg",
-  ];
+const PostImageBox: React.FC<PostImageBoxProps> = ({ images }) => {
   const bottomCount = images.length - 2;
   const style = {
     "--columns": bottomCount % 2 === 0 ? bottomCount : bottomCount * 2,
@@ -34,7 +26,7 @@ const PostImageBox: React.FC<PostImageBoxProps> = ({}) => {
       })}
     >
       {images.map((image, index) => (
-        <img src={image} key={index} />
+        <img src={API_URL + "/" + image} key={index} loading={"lazy"} />
       ))}
     </div>
   );

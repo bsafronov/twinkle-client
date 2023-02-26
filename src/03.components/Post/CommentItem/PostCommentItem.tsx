@@ -16,7 +16,7 @@ const PostCommentItem: React.FC<PostCommentItemProps> = ({}) => {
         <div />
       </Avatar>
       <div className={s.user}>
-        <CustomLink>Богдан Сафронов</CustomLink>
+        <CustomLink href="/">Богдан Сафронов</CustomLink>
         <p>
           Спасибо за прекрасный контент! Очень рад, что имею возможность
           оставить здесь комментарий.

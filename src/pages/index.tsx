@@ -1,15 +1,8 @@
+import { wrapper } from "@/01.shared/store/store";
 import MainLayout from "@/04.widgets/Layouts/MainLayout/MainLayout";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
 
 const Index = () => {
-  const router = useRouter();
-
-  useEffect(() => {
-    router.push("bogdasafronov");
-  }, []);
-
-  return <MainLayout></MainLayout>;
+  return <MainLayout>Index page</MainLayout>;
 };
 
 export default Index;

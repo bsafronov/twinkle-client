@@ -6,11 +6,15 @@ import {
   HiInformationCircle,
 } from "react-icons/hi";
 import Word from "@/02.UI/Word/Word";
+import { useAppSelector } from "@/01.shared/hooks/redux";
+import { displayName } from "@/01.shared/helpers/displayName";
 
 const ProfileHeaderInfo = () => {
+  const { owner } = useAppSelector(state => state.userWall);
+
   return (
     <div className={s.main}>
-      <h5 className={s.name}>Богдан Сафронов</h5>
+      <h5 className={s.name}>{owner && displayName(owner)}</h5>
       <ul className={s.list}>
         <li className={s.list_item}>
           <HiLocationMarker size={20} color={"var(--accent-faded)"} />

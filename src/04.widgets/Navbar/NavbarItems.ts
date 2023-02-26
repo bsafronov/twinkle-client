@@ -1,3 +1,4 @@
+import { useRoutes } from "@/01.shared/routes";
 import {
   HiUserCircle,
   HiNewspaper,
@@ -14,24 +15,27 @@ export interface NavbarItemProps {
   path: string;
 }
 
-export const navbarItems: NavbarItemProps[] = [
-  { logo: HiUserCircle, desc: "Моя страница", path: "/users/bogdasafronov" },
-  { logo: HiNewspaper, desc: "Новости", path: "/users/bogdasafronov/news" },
-  {
-    logo: HiChatAlt,
-    desc: "Мессенджер",
-    path: "/users/bogdasafronov/messages",
-  },
-  { logo: HiUsers, desc: "Подписки", path: "/users/bogdasafronov/subs" },
-  {
-    logo: HiUserGroup,
-    desc: "Сообщества",
-    path: "/users/bogdasafronov/groups",
-  },
-  {
-    logo: HiPhotograph,
-    desc: "Фотографии",
-    path: "/users/bogdasafronov/gallery",
-  },
-  { logo: HiMusicNote, desc: "Музыка", path: "/users/bogdasafronov/music" },
-];
+export function useNavbarRoutes() {
+  const routes = useRoutes();
+  return [
+    { logo: HiUserCircle, desc: "Моя страница", path: routes.USER_HOME },
+    { logo: HiNewspaper, desc: "Новости", path: routes.USER_NEWS },
+    {
+      logo: HiChatAlt,
+      desc: "Мессенджер",
+      path: routes.USER_MESSAGES,
+    },
+    { logo: HiUsers, desc: "Подписки", path: routes.USER_SUBS },
+    {
+      logo: HiUserGroup,
+      desc: "Сообщества",
+      path: routes.USER_GROUPS,
+    },
+    {
+      logo: HiPhotograph,
+      desc: "Фотографии",
+      path: routes.USER_GALLERY,
+    },
+    { logo: HiMusicNote, desc: "Музыка", path: routes.USER_MUSIC },
+  ];
+}

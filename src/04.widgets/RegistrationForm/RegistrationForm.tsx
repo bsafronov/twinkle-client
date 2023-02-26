@@ -2,7 +2,7 @@ import Button from "@/02.UI/Button/Button";
 import CustomLink from "@/02.UI/CustomLink/CustomLink";
 import Separator from "@/02.UI/Separator/Separator";
 import Title from "@/02.UI/Title/Title";
-import React from "react";
+import React, { useState } from "react";
 import s from "./RegistrationForm.module.scss";
 import { useForm, SubmitHandler } from "react-hook-form";
 import {
@@ -21,12 +21,19 @@ import FormHeader from "@/03.components/Form/FormHeader/FormHeader";
 import Subtext from "@/02.UI/Subtext/Subtext";
 import FormBody from "@/03.components/Form/FormBody/FormBody";
 import FormFooter from "@/03.components/Form/FormFooter/FormFooter";
+import { AuthService } from "@/01.shared/services/AuthService/AuthService";
+import axios, { AxiosError } from "axios";
+import { userSlice } from "@/01.shared/store/reducers/userReducer/userSlice";
+import { useAppDispatch } from "@/01.shared/hooks/redux";
+import { CreateUserDTO } from "@/01.shared/services/AuthService/AuthService.interface";
 
 interface RegistrationFormProps {}
 
 const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
   const router = useRouter();
-
+  const [apiError, setApiError] = useState<string>("");
+  const { login } = userSlice.actions;
+  const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
@@ -36,8 +43,18 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
     resolver: yupResolver(registrationFieldsSchema),
   });
 
-  const onSubmit: SubmitHandler<RegistrationFieldsNames> = data =>
-    console.log(data);
+  const onSubmit: SubmitHandler<RegistrationFieldsNames> = async data => {
+    try {
+      const res = await AuthService.registration(data);
+
+      router.push("/users/@" + res.user.username);
+      dispatch(login(res));
+    } catch (e: unknown | AxiosError) {
+      if (axios.isAxiosError(e)) {
+        setApiError(e.response?.data.message);
+      }
+    }
+  };
 
   return (
     <FormWrapper>
@@ -45,7 +62,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
         <Title size={3}>Регистрация</Title>
         <Subtext>
           <span>Есть аккаунт? </span>
-          <CustomLink onClick={() => router.push("/login")}>Войти</CustomLink>
+          <CustomLink href="/login">Войти</CustomLink>
         </Subtext>
       </FormHeader>
       <Separator border />
@@ -63,7 +80,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
             )}
           </InputBox>
           <InputBox>
-            <InputLabel optional>Логин</InputLabel>
+            <InputLabel required>Логин</InputLabel>
             <Input
               placeholder="ivanov"
               type={"text"}
@@ -73,28 +90,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
               <InputMessage error>{errors.username.message}</InputMessage>
             )}
           </InputBox>
-          <InputBox>
-            <InputLabel required>Имя</InputLabel>
-            <Input
-              placeholder="Иван"
-              type={"text"}
-              {...register("firstName")}
-            />
-            {errors.firstName && (
-              <InputMessage error>{errors.firstName.message}</InputMessage>
-            )}
-          </InputBox>
-          <InputBox>
-            <InputLabel required>Фамилия</InputLabel>
-            <Input
-              placeholder="Иванов"
-              type={"text"}
-              {...register("lastName")}
-            />
-            {errors.lastName && (
-              <InputMessage error>{errors.lastName.message}</InputMessage>
-            )}
-          </InputBox>
+
           <InputBox>
             <InputLabel required>Пароль</InputLabel>
             <Input type={"password"} {...register("password")} />
@@ -112,6 +108,28 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
             )}
           </InputBox>
           <InputBox>
+            <InputLabel optional>Имя</InputLabel>
+            <Input
+              placeholder="Иван"
+              type={"text"}
+              {...register("firstName")}
+            />
+            {errors.firstName && (
+              <InputMessage error>{errors.firstName.message}</InputMessage>
+            )}
+          </InputBox>
+          <InputBox>
+            <InputLabel optional>Фамилия</InputLabel>
+            <Input
+              placeholder="Иванов"
+              type={"text"}
+              {...register("lastName")}
+            />
+            {errors.lastName && (
+              <InputMessage error>{errors.lastName.message}</InputMessage>
+            )}
+          </InputBox>
+          <InputBox>
             <InputLabel optional>Возраст</InputLabel>
             <Input type={"number"} {...register("age")} />
             {errors.age && (
@@ -119,11 +137,12 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
             )}
           </InputBox>
         </div>
+        {apiError && <InputMessage error>{apiError}</InputMessage>}
         <Button _variant="link">Зарегистрироваться</Button>
       </FormBody>
       <Separator border />
       <FormFooter>
-        <CustomLink>Условия и соглашения</CustomLink>
+        <CustomLink href="/policy">Условия и соглашения</CustomLink>
       </FormFooter>
     </FormWrapper>
   );

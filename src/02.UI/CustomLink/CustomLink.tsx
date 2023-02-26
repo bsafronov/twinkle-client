@@ -1,25 +1,21 @@
 import clsx from "clsx";
+import Link from "next/link";
 import React from "react";
 import s from "./CustomLink.module.scss";
 
-interface CustomLinkProps extends React.HTMLAttributes<HTMLAnchorElement> {
+interface CustomLinkProps {
   small?: boolean;
+  className?: string;
+  children?: React.ReactNode;
+  href?: string;
 }
 
-const CustomLink: React.FC<CustomLinkProps> = ({
-  small,
-  children,
-  ...rest
-}) => {
+const CustomLink: React.FC<CustomLinkProps> = props => {
+  const { children, href, className } = props;
   return (
-    <a
-      {...rest}
-      className={clsx(s.main, {
-        [s.smaller]: small,
-      })}
-    >
+    <Link className={clsx(s.main, className)} href={href ? href : "/"}>
       {children}
-    </a>
+    </Link>
   );
 };
 
